@@ -1,0 +1,35 @@
+
+
+#ifndef __CMD_DEF__
+    #define __CMD_DEF__
+
+    typedef enum {
+        CMD_BOOT  =  1,
+        CMD_TRAN,
+        CMD_ECHO,
+        CMD_HWCOM,
+        CMD_HAPI,
+        CMD_INFINITE_LOOP,
+        CMD_LOOP,
+        CMD_HELP
+    };
+
+    static const char code CMD_TAB_HWCOM[] = {
+
+    //      separ nod  length   node_value           0   1   2   3   4   5   6   7
+    //-------------------------------------------------------------------------------
+             '@',  0,     5,    CMD_HELP,           '?',                                 //     HELP
+             '@',  0,     8,    CMD_BOOT,           'B','O','O','T',                     //     BOOT vector reset
+             '@',  0,     8,    CMD_ECHO,           'E','C','H','O',                     //     ECHO
+             '@',  0,     9,    CMD_HWCOM,          'H','W','C','O','M',                 //     HWCOM test
+             '@',  1,     7,    CMD_HAPI,               'A','P','I',                     //     HAPI
+             '@',  0,     9,    CMD_INFINITE_LOOP,  'I','L','O','O','P',                 //     Infinite loop
+             '@',  0,     8,    CMD_LOOP,           'L','O','O','P',                     //     Loop test
+             '@',  0,     8,    CMD_TRAN,           'T','R','A','N',                     //     TRAN START/STOP
+                 
+             '@',  0,     0                                                              //     End
+    //-------------------------------------------------------------------------------
+    };
+
+
+#endif
