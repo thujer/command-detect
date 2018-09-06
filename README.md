@@ -1,4 +1,4 @@
 command-detect
 ==============
 
-8051 app - Sekvence command detection
+8051 app - Sequence command detection
