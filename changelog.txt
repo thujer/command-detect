@@ -1,0 +1,37 @@
+1.01    070823  Prvni evolution verze
+
+1.02    071110  Pridana validace tabulky prikazu
+
+1.03    071111  Opravena chyba v detekci 1. prikazu
+
+1.04    071115  Opravena chyba v nacitani 2. a dalsich parametru
+
+1.05    071218  Opravena sekvencni chyba, v urcite posloupnosti
+                prikazu se mohlo stat, ze na zacatku prikazu
+                nebyl vynulovan index a prikaz tak nebyl detekovat
+                pripadu bylo minimum, napr. EEPREADH a ERRDEF
+                byl index prikazu vynulovan az po E druheho prikazu
+
+1.10    071218  Upraveno pro vice instanci
+                kazda instance ma vlastni pointer na buffer prikazu
+                pointer nutno inicializovat po startu
+
+1.11    071219  Funkce cmd_get_par_num upravena pro vice instanci
+
+1.12    080329  Pridany funkce pro povoleni zobrazeni znaku
+
+                pokud probiha ukladani parametru (pro backspace)
+                bit cmd_get_par_save_state(uchar session_id)
+
+                pokud neni plny buffer parametru (pro echo. znaku)
+                bit cmd_char_print_allowed(uchar session_id)
+
+1.13    080422  Pridan vypis vsech prikazu tabulky
+
+1.14    080520  Doplnen specialni znak '>' - pokud je prikaz konci
+                timto znakem, neuklada se parametr a neceka se
+                na odradkovani pro dokonceni prikazu
+
+1.15    090830  - rutin getparnum rozsirena na cislo typul long
+
+
