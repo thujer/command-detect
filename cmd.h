@@ -1,26 +1,23 @@
-#define uchar unsigned char
-#define uint unsigned int
+// Definice maker v NodeTab
+#define cGoNod     0x81  // If Ne, pricti k indexu nasl. hodnotu
+#define cExitCode  0x82  // If Ano, ukonci test a vrat nasledujici navratovou hodnotu
+#define cWaitPar   0x83  // Ocekavej parametry (muze byt text i cislo)
+#define cResetIx   0x84  // Zacni znovu - nuluj index
+#define cExitRet   0x85  // Skonci a zapis nasledujici akci do bufferu
+#define cResetRun  0x86  // Restartuj detekci, a zapis nasledujici akci do buf
+#define cGoNodFar  0x87  // If Ne, pricti k indexu nasl. hodnotu + 100h
+#define cGoNodFar2 0x88  // If Ne, pricti k indexu nasl. hodnotu + 200h
+#define cGoNodFar3 0x89  // If Ne, pricti k indexu nasl. hodnotu + 300h
+#define cGoNodFar4 0x8A  // If Ne, pricti k indexu nasl. hodnotu + 400h
+#define cRptRstIx  0x8B  // Zacni znovu, testuj znovu cyklus prvni urovne
 
-#ifndef __CMD_H__
-    #define __CMD_H__
+extern unsigned char *CMD_GetPar(unsigned char Index);
+extern unsigned int  CMD_GetParNum(unsigned char Index, unsigned char Omez);
+extern unsigned int  CMD_GetParHex(unsigned char Index, unsigned char Omez);
+extern unsigned char CMD_TestProc(unsigned char *CMDTab, unsigned char Get_Char);
+extern unsigned char CMD_GetParIx();
 
-    #define uchar unsigned char
+extern unsigned char CMD_Status;
+extern unsigned int  CMDTab_ix;
+extern unsigned char CMD_NumOfPar;
 
-    // Command detector sessions
-    typedef enum {
-        CMD_SESSION_ID_TERMINAL = 0,
-    
-        CMD_SESSIONS_COUNT
-    };
-
-    extern void  cmd_init(uchar session_id, char *cmd_tab, int tab_size, char *par_buf, char par_buf_size);
-    extern char *cmd_getpar(uchar session_id, uchar index);
-    extern long  cmd_getparnum(uchar session_id, uchar index, uchar omez);
-    extern char  cmd_par_count(uchar session_id);
-    extern char  cmd_detect(uchar session_id, uchar get_char);
-    extern bit   cmd_validate_test(uchar session_id);
-    extern void  cmd_command_list(uchar session_id);
-
-    extern bit   cmd_get_par_save_state(uchar session_id);
-    extern bit   cmd_char_print_allowed(uchar session_id);
-#endif
